@@ -112,10 +112,9 @@ void main_fsm() {
 			}
 			break;
 		case INC_RED:							//Mode 2
-			red_led_blinky();					//Blinking red led
-
-			//The top 2 7SEG leds use to display the mode.
-			//The bottom 2 7SEG leds use to display time of correspond LED.
+			//Blink all single red LEDs
+			red_led_blinky();
+			//Update buffer for displaying Mode 2
 			updateBuffer7SEG(2, RED_TIME/100);
 
 			//RED_TIME is the latest value but not sure to be set or not

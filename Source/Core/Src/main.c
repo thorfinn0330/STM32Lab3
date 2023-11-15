@@ -108,7 +108,6 @@ int main(void)
   TIME_DURATION = 1000/frequency; //ms
   while (1)
   {
-
 	  main_fsm();
 	  scan7SEG();
 	  count_down();

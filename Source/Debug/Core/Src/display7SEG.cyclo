@@ -1,4 +1,4 @@
 ../Core/Src/display7SEG.c:12:6:enable7SEG	1
 ../Core/Src/display7SEG.c:19:6:display7SEG	3
 ../Core/Src/display7SEG.c:31:6:updateBuffer7SEG	1
-../Core/Src/display7SEG.c:38:6:scan7SEG	4
+../Core/Src/display7SEG.c:39:6:scan7SEG	4

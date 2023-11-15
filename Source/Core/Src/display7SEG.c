@@ -35,6 +35,7 @@ void updateBuffer7SEG(int value1, int value2) {
 	led7SEG_buffer[3] = value2%10;
 }
 
+//use timer4 for scan led 7SEG
 void scan7SEG() {
 	if(index_7SEG == -1) {
 		updateBuffer7SEG(RED_TIME, GREEN_TIME);
@@ -43,14 +44,14 @@ void scan7SEG() {
 		HAL_GPIO_WritePin(EN_2_GPIO_Port, EN_2_Pin, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(EN_3_GPIO_Port, EN_3_Pin, GPIO_PIN_SET);
 		index_7SEG = 0;
-		setTimer5(5);
+		setTimer4(10);				//INIT timer
 	}
 	else {
-		if(timer5_flag == 1) {
+		if(timer4_flag == 1) {
 			index_7SEG++;
-			setTimer5(5);
+			setTimer4(10);			//every Led 7SEG Enable in 100ms
 		}
-		if(index_7SEG >= 4) index_7SEG = 0;
+		if(index_7SEG >= MAX_LED7SEG) index_7SEG = 0;
 		enable7SEG(index_7SEG);
 		display7SEG(led7SEG_buffer[index_7SEG]);
 
