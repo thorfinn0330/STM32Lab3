@@ -44,7 +44,7 @@ extern int flag_red_change;
 extern int flag_yellow_change;
 extern int flag_green_change;
 
-extern int buffer_time;
-
+extern int frequency;
+extern int TIME_DURATION;
 
 #endif /* INC_GLOBAL_H_ */

@@ -22,8 +22,10 @@ int status =INIT;
 int counter1 = 5;
 int counter2 = 3;
 
-int buffer_time = 0;
 
 int flag_red_change = 0;
 int flag_yellow_change = 0;
 int flag_green_change = 0;
+
+int frequency = 1000;
+int TIME_DURATION = 1;

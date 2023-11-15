@@ -7,6 +7,7 @@
 
 #include "fsm_main.h"
 //use timer2 for main_fsm
+
 void count_down() {
 	if(timer1_flag == 1) {
 	  setTimer1(100);
