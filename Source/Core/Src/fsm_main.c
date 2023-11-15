@@ -7,19 +7,29 @@
 
 #include "fsm_main.h"
 //use timer2 for main_fsm
-
+void saveNormalTime() {
+	PRE_NORMAL_RED_TIME = RED_TIME;
+	RED_OLD_TIME = RED_TIME;
+	PRE_NORMAL_AMBER_TIME = AMBER_TIME;
+	PRE_NORMAL_GREEN_TIME = GREEN_TIME;
+}
+void normalToMode2() {
+	clearAllLed();
+	setTimer4(25);
+	status = INC_RED;
+	saveNormalTime();
+}
 void count_down() {
 	if(timer1_flag == 1) {
 	  setTimer1(100);
 	  counter1--;
 	  counter2--;
-	  updateBuffer7SEG(counter1, counter2);
+	  if(counter1 >= 0 && counter2 >=0)
+		  updateBuffer7SEG(counter1, counter2);
 	  HAL_GPIO_TogglePin(LED_TEST_GPIO_Port, LED_TEST_Pin);
   }
 }
 void main_fsm() {
-	scan7SEG();
-	count_down();
 	switch(status) {
 		case INIT:
 			clearAllLed();
@@ -35,13 +45,11 @@ void main_fsm() {
 			if(timer2_flag == 1) {
 				setTimer2(AMBER_TIME);
 				counter2 = AMBER_TIME/100;
+				updateBuffer7SEG(counter1, counter2);
 				status = RED_AMBER;
 			}
 			if(isButton1Pressed() == 1) {
-				clearAllLed();
-				setTimer4(25);
-				status = INC_RED;
-				RED_OLD_TIME = RED_TIME;
+				normalToMode2();
 			}
 			break;
 		case RED_AMBER:
@@ -51,13 +59,11 @@ void main_fsm() {
 				setTimer2(GREEN_TIME);
 				counter1 = GREEN_TIME/100;
 				counter2 = RED_TIME/100;
+				updateBuffer7SEG(counter1, counter2);
 				status = GREEN_RED;
 			}
 			if(isButton1Pressed() == 1) {
-				clearAllLed();
-				setTimer4(25);
-				status = INC_RED;
-				RED_OLD_TIME = RED_TIME;
+				normalToMode2();
 			}
 			break;
 		case GREEN_RED:
@@ -66,13 +72,11 @@ void main_fsm() {
 			if(timer2_flag == 1) {
 				setTimer2(AMBER_TIME);
 				counter1 = AMBER_TIME/100;
+				updateBuffer7SEG(counter1, counter2);
 				status = AMBER_RED;
 			}
 			if(isButton1Pressed() == 1) {
-				clearAllLed();
-				setTimer4(25);
-				status = INC_RED;
-				RED_OLD_TIME = RED_TIME;
+				normalToMode2();
 			}
 			break;
 		case AMBER_RED:
@@ -82,16 +86,14 @@ void main_fsm() {
 				setTimer2(GREEN_TIME);
 				counter1 = RED_TIME/100;
 				counter2 = GREEN_TIME/100;
+				updateBuffer7SEG(counter1, counter2);
 				status = RED_GREEN;
 			}
 			if(isButton1Pressed() == 1) {
-				clearAllLed();
-				setTimer4(25);
-				status = INC_RED;
-				RED_OLD_TIME = RED_TIME;
+				normalToMode2();
 			}
 			break;
-		case INC_RED:
+		case INC_RED:							//Mode 2
 			red_led_blinky();
 			updateBuffer7SEG(2, RED_TIME/100);
 			if(isButton1Pressed() == 1){
@@ -105,6 +107,10 @@ void main_fsm() {
 				AMBER_OLD_TIME = AMBER_TIME;
 			}
 			if(isButton2Pressed() == 1){
+				if(flag_red_change == 1){
+					RED_OLD_TIME = RED_TIME;
+					flag_red_change = 0;
+				}
 				RED_TIME += 100;
 				if(RED_TIME >= 10000) RED_TIME = 100;
 			}
@@ -146,6 +152,8 @@ void main_fsm() {
 				flag_green_change = 0;
 				//check valid of time
 				if(GREEN_TIME + AMBER_TIME != RED_TIME) {
+				//If the time setting is not satisfied,
+				//switch to error correction state for 2 seconds to let the user know
 					status = TIME_ERROR;
 					setTimer2(200);
 				}
@@ -168,7 +176,7 @@ void main_fsm() {
 			//all led7SED display 0 for error
 			updateBuffer7SEG(0, 0);
 			clearAllLed();
-			RED_TIME = RED_OLD_TIME;
+			RED_TIME = PRE_NORMAL_RED_TIME;
 			AMBER_TIME = AMBER_OLD_TIME;
 			GREEN_TIME = GREEN_OLD_TIME ;
 			if(timer2_flag == 1) {
@@ -176,10 +184,12 @@ void main_fsm() {
 				setTimer2(GREEN_TIME);
 				counter1 = RED_TIME/100;
 				counter2 = GREEN_TIME/100;
+				updateBuffer7SEG(counter1, counter2);
 }
 			break;
 		default:
 			break;
 		}
+
 }
 

@@ -110,7 +110,8 @@ int main(void)
   {
 
 	  main_fsm();
-
+	  scan7SEG();
+	  count_down();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

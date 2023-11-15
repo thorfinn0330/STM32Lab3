@@ -24,6 +24,10 @@
 #define AMBER_LED		11
 #define GREEN_LED		12
 
+extern int PRE_NORMAL_RED_TIME;
+extern int PRE_NORMAL_AMBER_TIME;
+extern int PRE_NORMAL_GREEN_TIME;
+
 extern int RED_OLD_TIME;
 extern int AMBER_OLD_TIME;
 extern int GREEN_OLD_TIME;
@@ -32,8 +36,10 @@ extern int RED_TIME;
 extern int AMBER_TIME;
 extern int GREEN_TIME;
 
-extern int status;
+extern int buffer_time;
 
+extern int status;
+extern int mode_led;
 extern int counter1;
 extern int counter2;
 
