@@ -1,0 +1,3 @@
+../Core/Src/blinky_led.c:10:6:red_led_blinky	2
+../Core/Src/blinky_led.c:18:6:amber_led_blinky	2
+../Core/Src/blinky_led.c:26:6:green_led_blinky	2

@@ -100,21 +100,11 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 
   setTimer1(100);
-  index_7SEG = -1;
   while (1)
   {
 
-	  scan7SEG();
 	  main_fsm();
-	  if(timer1_flag == 1) {
-		  setTimer1(100);
-		  counter1--;
-		  counter2--;
-	//	  if(counter1 < 0) counter1 = 0;
-	//	  if(counter2 < 0) counter2 = 0;
-		  updateBuffer7SEG(counter1, counter2);
-		  HAL_GPIO_TogglePin(LED_TEST_GPIO_Port, LED_TEST_Pin);
-	  }
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
