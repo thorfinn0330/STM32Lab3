@@ -39,9 +39,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_macro  00016cb6  00000000  00000000  0002b8fc  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0000c2c2  00000000  00000000  000425b2  2**0
+ 18 .debug_line   0000c2c4  00000000  00000000  000425b2  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000825ca  00000000  00000000  0004e874  2**0
+ 19 .debug_str    000825ca  00000000  00000000  0004e876  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  20 .debug_frame  000029b0  00000000  00000000  000d0e40  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -933,687 +933,689 @@ void count_down() {
 void main_fsm() {
  8000714:	b580      	push	{r7, lr}
  8000716:	af00      	add	r7, sp, #0
-	scan7SEG();
- 8000718:	f7ff ff76 	bl	8000608 <scan7SEG>
-	count_down();
- 800071c:	f7ff ffd0 	bl	80006c0 <count_down>
+
 	switch(status) {
- 8000720:	4baa      	ldr	r3, [pc, #680]	; (80009cc <main_fsm+0x2b8>)
- 8000722:	681b      	ldr	r3, [r3, #0]
- 8000724:	3b01      	subs	r3, #1
- 8000726:	2b08      	cmp	r3, #8
- 8000728:	f200 8246 	bhi.w	8000bb8 <main_fsm+0x4a4>
- 800072c:	a201      	add	r2, pc, #4	; (adr r2, 8000734 <main_fsm+0x20>)
- 800072e:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
- 8000732:	bf00      	nop
- 8000734:	08000759 	.word	0x08000759
- 8000738:	0800079d 	.word	0x0800079d
- 800073c:	080007fb 	.word	0x080007fb
- 8000740:	0800086d 	.word	0x0800086d
- 8000744:	080008cb 	.word	0x080008cb
- 8000748:	0800093d 	.word	0x0800093d
- 800074c:	080009f9 	.word	0x080009f9
- 8000750:	08000a87 	.word	0x08000a87
- 8000754:	08000b53 	.word	0x08000b53
+ 8000718:	4baa      	ldr	r3, [pc, #680]	; (80009c4 <main_fsm+0x2b0>)
+ 800071a:	681b      	ldr	r3, [r3, #0]
+ 800071c:	3b01      	subs	r3, #1
+ 800071e:	2b08      	cmp	r3, #8
+ 8000720:	f200 8246 	bhi.w	8000bb0 <main_fsm+0x49c>
+ 8000724:	a201      	add	r2, pc, #4	; (adr r2, 800072c <main_fsm+0x18>)
+ 8000726:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
+ 800072a:	bf00      	nop
+ 800072c:	08000751 	.word	0x08000751
+ 8000730:	08000795 	.word	0x08000795
+ 8000734:	080007f3 	.word	0x080007f3
+ 8000738:	08000865 	.word	0x08000865
+ 800073c:	080008c3 	.word	0x080008c3
+ 8000740:	08000935 	.word	0x08000935
+ 8000744:	080009f1 	.word	0x080009f1
+ 8000748:	08000a7f 	.word	0x08000a7f
+ 800074c:	08000b4b 	.word	0x08000b4b
 		case INIT:
 			clearAllLed();
- 8000758:	f000 fab8 	bl	8000ccc <clearAllLed>
+ 8000750:	f000 fabc 	bl	8000ccc <clearAllLed>
 			status = RED_GREEN;
- 800075c:	4b9b      	ldr	r3, [pc, #620]	; (80009cc <main_fsm+0x2b8>)
- 800075e:	2202      	movs	r2, #2
- 8000760:	601a      	str	r2, [r3, #0]
+ 8000754:	4b9b      	ldr	r3, [pc, #620]	; (80009c4 <main_fsm+0x2b0>)
+ 8000756:	2202      	movs	r2, #2
+ 8000758:	601a      	str	r2, [r3, #0]
 			setTimer1(100);
- 8000762:	2064      	movs	r0, #100	; 0x64
- 8000764:	f000 fbee 	bl	8000f44 <setTimer1>
+ 800075a:	2064      	movs	r0, #100	; 0x64
+ 800075c:	f000 fbf2 	bl	8000f44 <setTimer1>
 			setTimer2(GREEN_TIME);
- 8000768:	4b99      	ldr	r3, [pc, #612]	; (80009d0 <main_fsm+0x2bc>)
- 800076a:	681b      	ldr	r3, [r3, #0]
- 800076c:	4618      	mov	r0, r3
- 800076e:	f000 fbfd 	bl	8000f6c <setTimer2>
+ 8000760:	4b99      	ldr	r3, [pc, #612]	; (80009c8 <main_fsm+0x2b4>)
+ 8000762:	681b      	ldr	r3, [r3, #0]
+ 8000764:	4618      	mov	r0, r3
+ 8000766:	f000 fc01 	bl	8000f6c <setTimer2>
 			counter1 = RED_TIME/100;
- 8000772:	4b98      	ldr	r3, [pc, #608]	; (80009d4 <main_fsm+0x2c0>)
- 8000774:	681b      	ldr	r3, [r3, #0]
- 8000776:	4a98      	ldr	r2, [pc, #608]	; (80009d8 <main_fsm+0x2c4>)
- 8000778:	fb82 1203 	smull	r1, r2, r2, r3
- 800077c:	1152      	asrs	r2, r2, #5
- 800077e:	17db      	asrs	r3, r3, #31
- 8000780:	1ad3      	subs	r3, r2, r3
- 8000782:	4a96      	ldr	r2, [pc, #600]	; (80009dc <main_fsm+0x2c8>)
- 8000784:	6013      	str	r3, [r2, #0]
+ 800076a:	4b98      	ldr	r3, [pc, #608]	; (80009cc <main_fsm+0x2b8>)
+ 800076c:	681b      	ldr	r3, [r3, #0]
+ 800076e:	4a98      	ldr	r2, [pc, #608]	; (80009d0 <main_fsm+0x2bc>)
+ 8000770:	fb82 1203 	smull	r1, r2, r2, r3
+ 8000774:	1152      	asrs	r2, r2, #5
+ 8000776:	17db      	asrs	r3, r3, #31
+ 8000778:	1ad3      	subs	r3, r2, r3
+ 800077a:	4a96      	ldr	r2, [pc, #600]	; (80009d4 <main_fsm+0x2c0>)
+ 800077c:	6013      	str	r3, [r2, #0]
 			counter2 = GREEN_TIME/100;
- 8000786:	4b92      	ldr	r3, [pc, #584]	; (80009d0 <main_fsm+0x2bc>)
- 8000788:	681b      	ldr	r3, [r3, #0]
- 800078a:	4a93      	ldr	r2, [pc, #588]	; (80009d8 <main_fsm+0x2c4>)
- 800078c:	fb82 1203 	smull	r1, r2, r2, r3
- 8000790:	1152      	asrs	r2, r2, #5
- 8000792:	17db      	asrs	r3, r3, #31
- 8000794:	1ad3      	subs	r3, r2, r3
- 8000796:	4a92      	ldr	r2, [pc, #584]	; (80009e0 <main_fsm+0x2cc>)
- 8000798:	6013      	str	r3, [r2, #0]
+ 800077e:	4b92      	ldr	r3, [pc, #584]	; (80009c8 <main_fsm+0x2b4>)
+ 8000780:	681b      	ldr	r3, [r3, #0]
+ 8000782:	4a93      	ldr	r2, [pc, #588]	; (80009d0 <main_fsm+0x2bc>)
+ 8000784:	fb82 1203 	smull	r1, r2, r2, r3
+ 8000788:	1152      	asrs	r2, r2, #5
+ 800078a:	17db      	asrs	r3, r3, #31
+ 800078c:	1ad3      	subs	r3, r2, r3
+ 800078e:	4a92      	ldr	r2, [pc, #584]	; (80009d8 <main_fsm+0x2c4>)
+ 8000790:	6013      	str	r3, [r2, #0]
 			break;
- 800079a:	e21e      	b.n	8000bda <main_fsm+0x4c6>
+ 8000792:	e21e      	b.n	8000bd2 <main_fsm+0x4be>
 		case RED_GREEN:
 			setLedOnWay1(RED_LED);
- 800079c:	200a      	movs	r0, #10
- 800079e:	f000 fa39 	bl	8000c14 <setLedOnWay1>
+ 8000794:	200a      	movs	r0, #10
+ 8000796:	f000 fa3d 	bl	8000c14 <setLedOnWay1>
 			setLedOnWay2(GREEN_LED);
- 80007a2:	200c      	movs	r0, #12
- 80007a4:	f000 fa64 	bl	8000c70 <setLedOnWay2>
+ 800079a:	200c      	movs	r0, #12
+ 800079c:	f000 fa68 	bl	8000c70 <setLedOnWay2>
 			if(timer2_flag == 1) {
- 80007a8:	4b8e      	ldr	r3, [pc, #568]	; (80009e4 <main_fsm+0x2d0>)
- 80007aa:	681b      	ldr	r3, [r3, #0]
- 80007ac:	2b01      	cmp	r3, #1
- 80007ae:	d111      	bne.n	80007d4 <main_fsm+0xc0>
+ 80007a0:	4b8e      	ldr	r3, [pc, #568]	; (80009dc <main_fsm+0x2c8>)
+ 80007a2:	681b      	ldr	r3, [r3, #0]
+ 80007a4:	2b01      	cmp	r3, #1
+ 80007a6:	d111      	bne.n	80007cc <main_fsm+0xb8>
 				setTimer2(AMBER_TIME);
- 80007b0:	4b8d      	ldr	r3, [pc, #564]	; (80009e8 <main_fsm+0x2d4>)
- 80007b2:	681b      	ldr	r3, [r3, #0]
- 80007b4:	4618      	mov	r0, r3
- 80007b6:	f000 fbd9 	bl	8000f6c <setTimer2>
+ 80007a8:	4b8d      	ldr	r3, [pc, #564]	; (80009e0 <main_fsm+0x2cc>)
+ 80007aa:	681b      	ldr	r3, [r3, #0]
+ 80007ac:	4618      	mov	r0, r3
+ 80007ae:	f000 fbdd 	bl	8000f6c <setTimer2>
 				counter2 = AMBER_TIME/100;
- 80007ba:	4b8b      	ldr	r3, [pc, #556]	; (80009e8 <main_fsm+0x2d4>)
- 80007bc:	681b      	ldr	r3, [r3, #0]
- 80007be:	4a86      	ldr	r2, [pc, #536]	; (80009d8 <main_fsm+0x2c4>)
- 80007c0:	fb82 1203 	smull	r1, r2, r2, r3
- 80007c4:	1152      	asrs	r2, r2, #5
- 80007c6:	17db      	asrs	r3, r3, #31
- 80007c8:	1ad3      	subs	r3, r2, r3
- 80007ca:	4a85      	ldr	r2, [pc, #532]	; (80009e0 <main_fsm+0x2cc>)
- 80007cc:	6013      	str	r3, [r2, #0]
+ 80007b2:	4b8b      	ldr	r3, [pc, #556]	; (80009e0 <main_fsm+0x2cc>)
+ 80007b4:	681b      	ldr	r3, [r3, #0]
+ 80007b6:	4a86      	ldr	r2, [pc, #536]	; (80009d0 <main_fsm+0x2bc>)
+ 80007b8:	fb82 1203 	smull	r1, r2, r2, r3
+ 80007bc:	1152      	asrs	r2, r2, #5
+ 80007be:	17db      	asrs	r3, r3, #31
+ 80007c0:	1ad3      	subs	r3, r2, r3
+ 80007c2:	4a85      	ldr	r2, [pc, #532]	; (80009d8 <main_fsm+0x2c4>)
+ 80007c4:	6013      	str	r3, [r2, #0]
 				status = RED_AMBER;
- 80007ce:	4b7f      	ldr	r3, [pc, #508]	; (80009cc <main_fsm+0x2b8>)
- 80007d0:	2203      	movs	r2, #3
- 80007d2:	601a      	str	r2, [r3, #0]
+ 80007c6:	4b7f      	ldr	r3, [pc, #508]	; (80009c4 <main_fsm+0x2b0>)
+ 80007c8:	2203      	movs	r2, #3
+ 80007ca:	601a      	str	r2, [r3, #0]
 			}
 			if(isButton1Pressed() == 1) {
- 80007d4:	f7ff fd2e 	bl	8000234 <isButton1Pressed>
- 80007d8:	4603      	mov	r3, r0
- 80007da:	2b01      	cmp	r3, #1
- 80007dc:	f040 81ee 	bne.w	8000bbc <main_fsm+0x4a8>
+ 80007cc:	f7ff fd32 	bl	8000234 <isButton1Pressed>
+ 80007d0:	4603      	mov	r3, r0
+ 80007d2:	2b01      	cmp	r3, #1
+ 80007d4:	f040 81ee 	bne.w	8000bb4 <main_fsm+0x4a0>
 				clearAllLed();
- 80007e0:	f000 fa74 	bl	8000ccc <clearAllLed>
+ 80007d8:	f000 fa78 	bl	8000ccc <clearAllLed>
 				setTimer4(25);
- 80007e4:	2019      	movs	r0, #25
- 80007e6:	f000 fbd5 	bl	8000f94 <setTimer4>
+ 80007dc:	2019      	movs	r0, #25
+ 80007de:	f000 fbd9 	bl	8000f94 <setTimer4>
 				status = INC_RED;
- 80007ea:	4b78      	ldr	r3, [pc, #480]	; (80009cc <main_fsm+0x2b8>)
- 80007ec:	2206      	movs	r2, #6
- 80007ee:	601a      	str	r2, [r3, #0]
+ 80007e2:	4b78      	ldr	r3, [pc, #480]	; (80009c4 <main_fsm+0x2b0>)
+ 80007e4:	2206      	movs	r2, #6
+ 80007e6:	601a      	str	r2, [r3, #0]
 				RED_OLD_TIME = RED_TIME;
- 80007f0:	4b78      	ldr	r3, [pc, #480]	; (80009d4 <main_fsm+0x2c0>)
- 80007f2:	681b      	ldr	r3, [r3, #0]
- 80007f4:	4a7d      	ldr	r2, [pc, #500]	; (80009ec <main_fsm+0x2d8>)
- 80007f6:	6013      	str	r3, [r2, #0]
+ 80007e8:	4b78      	ldr	r3, [pc, #480]	; (80009cc <main_fsm+0x2b8>)
+ 80007ea:	681b      	ldr	r3, [r3, #0]
+ 80007ec:	4a7d      	ldr	r2, [pc, #500]	; (80009e4 <main_fsm+0x2d0>)
+ 80007ee:	6013      	str	r3, [r2, #0]
 			}
 			break;
- 80007f8:	e1e0      	b.n	8000bbc <main_fsm+0x4a8>
+ 80007f0:	e1e0      	b.n	8000bb4 <main_fsm+0x4a0>
 		case RED_AMBER:
 			setLedOnWay1(RED_LED);
- 80007fa:	200a      	movs	r0, #10
- 80007fc:	f000 fa0a 	bl	8000c14 <setLedOnWay1>
+ 80007f2:	200a      	movs	r0, #10
+ 80007f4:	f000 fa0e 	bl	8000c14 <setLedOnWay1>
 			setLedOnWay2(AMBER_LED);
- 8000800:	200b      	movs	r0, #11
- 8000802:	f000 fa35 	bl	8000c70 <setLedOnWay2>
+ 80007f8:	200b      	movs	r0, #11
+ 80007fa:	f000 fa39 	bl	8000c70 <setLedOnWay2>
 			if(timer2_flag == 1) {
- 8000806:	4b77      	ldr	r3, [pc, #476]	; (80009e4 <main_fsm+0x2d0>)
- 8000808:	681b      	ldr	r3, [r3, #0]
- 800080a:	2b01      	cmp	r3, #1
- 800080c:	d11b      	bne.n	8000846 <main_fsm+0x132>
+ 80007fe:	4b77      	ldr	r3, [pc, #476]	; (80009dc <main_fsm+0x2c8>)
+ 8000800:	681b      	ldr	r3, [r3, #0]
+ 8000802:	2b01      	cmp	r3, #1
+ 8000804:	d11b      	bne.n	800083e <main_fsm+0x12a>
 				setTimer2(GREEN_TIME);
- 800080e:	4b70      	ldr	r3, [pc, #448]	; (80009d0 <main_fsm+0x2bc>)
- 8000810:	681b      	ldr	r3, [r3, #0]
- 8000812:	4618      	mov	r0, r3
- 8000814:	f000 fbaa 	bl	8000f6c <setTimer2>
+ 8000806:	4b70      	ldr	r3, [pc, #448]	; (80009c8 <main_fsm+0x2b4>)
+ 8000808:	681b      	ldr	r3, [r3, #0]
+ 800080a:	4618      	mov	r0, r3
+ 800080c:	f000 fbae 	bl	8000f6c <setTimer2>
 				counter1 = GREEN_TIME/100;
- 8000818:	4b6d      	ldr	r3, [pc, #436]	; (80009d0 <main_fsm+0x2bc>)
- 800081a:	681b      	ldr	r3, [r3, #0]
- 800081c:	4a6e      	ldr	r2, [pc, #440]	; (80009d8 <main_fsm+0x2c4>)
- 800081e:	fb82 1203 	smull	r1, r2, r2, r3
- 8000822:	1152      	asrs	r2, r2, #5
- 8000824:	17db      	asrs	r3, r3, #31
- 8000826:	1ad3      	subs	r3, r2, r3
- 8000828:	4a6c      	ldr	r2, [pc, #432]	; (80009dc <main_fsm+0x2c8>)
- 800082a:	6013      	str	r3, [r2, #0]
+ 8000810:	4b6d      	ldr	r3, [pc, #436]	; (80009c8 <main_fsm+0x2b4>)
+ 8000812:	681b      	ldr	r3, [r3, #0]
+ 8000814:	4a6e      	ldr	r2, [pc, #440]	; (80009d0 <main_fsm+0x2bc>)
+ 8000816:	fb82 1203 	smull	r1, r2, r2, r3
+ 800081a:	1152      	asrs	r2, r2, #5
+ 800081c:	17db      	asrs	r3, r3, #31
+ 800081e:	1ad3      	subs	r3, r2, r3
+ 8000820:	4a6c      	ldr	r2, [pc, #432]	; (80009d4 <main_fsm+0x2c0>)
+ 8000822:	6013      	str	r3, [r2, #0]
 				counter2 = RED_TIME/100;
- 800082c:	4b69      	ldr	r3, [pc, #420]	; (80009d4 <main_fsm+0x2c0>)
- 800082e:	681b      	ldr	r3, [r3, #0]
- 8000830:	4a69      	ldr	r2, [pc, #420]	; (80009d8 <main_fsm+0x2c4>)
- 8000832:	fb82 1203 	smull	r1, r2, r2, r3
- 8000836:	1152      	asrs	r2, r2, #5
- 8000838:	17db      	asrs	r3, r3, #31
- 800083a:	1ad3      	subs	r3, r2, r3
- 800083c:	4a68      	ldr	r2, [pc, #416]	; (80009e0 <main_fsm+0x2cc>)
- 800083e:	6013      	str	r3, [r2, #0]
+ 8000824:	4b69      	ldr	r3, [pc, #420]	; (80009cc <main_fsm+0x2b8>)
+ 8000826:	681b      	ldr	r3, [r3, #0]
+ 8000828:	4a69      	ldr	r2, [pc, #420]	; (80009d0 <main_fsm+0x2bc>)
+ 800082a:	fb82 1203 	smull	r1, r2, r2, r3
+ 800082e:	1152      	asrs	r2, r2, #5
+ 8000830:	17db      	asrs	r3, r3, #31
+ 8000832:	1ad3      	subs	r3, r2, r3
+ 8000834:	4a68      	ldr	r2, [pc, #416]	; (80009d8 <main_fsm+0x2c4>)
+ 8000836:	6013      	str	r3, [r2, #0]
 				status = GREEN_RED;
- 8000840:	4b62      	ldr	r3, [pc, #392]	; (80009cc <main_fsm+0x2b8>)
- 8000842:	2204      	movs	r2, #4
- 8000844:	601a      	str	r2, [r3, #0]
+ 8000838:	4b62      	ldr	r3, [pc, #392]	; (80009c4 <main_fsm+0x2b0>)
+ 800083a:	2204      	movs	r2, #4
+ 800083c:	601a      	str	r2, [r3, #0]
 			}
 			if(isButton1Pressed() == 1) {
- 8000846:	f7ff fcf5 	bl	8000234 <isButton1Pressed>
- 800084a:	4603      	mov	r3, r0
- 800084c:	2b01      	cmp	r3, #1
- 800084e:	f040 81b7 	bne.w	8000bc0 <main_fsm+0x4ac>
+ 800083e:	f7ff fcf9 	bl	8000234 <isButton1Pressed>
+ 8000842:	4603      	mov	r3, r0
+ 8000844:	2b01      	cmp	r3, #1
+ 8000846:	f040 81b7 	bne.w	8000bb8 <main_fsm+0x4a4>
 				clearAllLed();
- 8000852:	f000 fa3b 	bl	8000ccc <clearAllLed>
+ 800084a:	f000 fa3f 	bl	8000ccc <clearAllLed>
 				setTimer4(25);
- 8000856:	2019      	movs	r0, #25
- 8000858:	f000 fb9c 	bl	8000f94 <setTimer4>
+ 800084e:	2019      	movs	r0, #25
+ 8000850:	f000 fba0 	bl	8000f94 <setTimer4>
 				status = INC_RED;
- 800085c:	4b5b      	ldr	r3, [pc, #364]	; (80009cc <main_fsm+0x2b8>)
- 800085e:	2206      	movs	r2, #6
- 8000860:	601a      	str	r2, [r3, #0]
+ 8000854:	4b5b      	ldr	r3, [pc, #364]	; (80009c4 <main_fsm+0x2b0>)
+ 8000856:	2206      	movs	r2, #6
+ 8000858:	601a      	str	r2, [r3, #0]
 				RED_OLD_TIME = RED_TIME;
- 8000862:	4b5c      	ldr	r3, [pc, #368]	; (80009d4 <main_fsm+0x2c0>)
- 8000864:	681b      	ldr	r3, [r3, #0]
- 8000866:	4a61      	ldr	r2, [pc, #388]	; (80009ec <main_fsm+0x2d8>)
- 8000868:	6013      	str	r3, [r2, #0]
+ 800085a:	4b5c      	ldr	r3, [pc, #368]	; (80009cc <main_fsm+0x2b8>)
+ 800085c:	681b      	ldr	r3, [r3, #0]
+ 800085e:	4a61      	ldr	r2, [pc, #388]	; (80009e4 <main_fsm+0x2d0>)
+ 8000860:	6013      	str	r3, [r2, #0]
 			}
 			break;
- 800086a:	e1a9      	b.n	8000bc0 <main_fsm+0x4ac>
+ 8000862:	e1a9      	b.n	8000bb8 <main_fsm+0x4a4>
 		case GREEN_RED:
 			setLedOnWay1(GREEN_LED);
- 800086c:	200c      	movs	r0, #12
- 800086e:	f000 f9d1 	bl	8000c14 <setLedOnWay1>
+ 8000864:	200c      	movs	r0, #12
+ 8000866:	f000 f9d5 	bl	8000c14 <setLedOnWay1>
 			setLedOnWay2(RED_LED);
- 8000872:	200a      	movs	r0, #10
- 8000874:	f000 f9fc 	bl	8000c70 <setLedOnWay2>
+ 800086a:	200a      	movs	r0, #10
+ 800086c:	f000 fa00 	bl	8000c70 <setLedOnWay2>
 			if(timer2_flag == 1) {
- 8000878:	4b5a      	ldr	r3, [pc, #360]	; (80009e4 <main_fsm+0x2d0>)
- 800087a:	681b      	ldr	r3, [r3, #0]
- 800087c:	2b01      	cmp	r3, #1
- 800087e:	d111      	bne.n	80008a4 <main_fsm+0x190>
+ 8000870:	4b5a      	ldr	r3, [pc, #360]	; (80009dc <main_fsm+0x2c8>)
+ 8000872:	681b      	ldr	r3, [r3, #0]
+ 8000874:	2b01      	cmp	r3, #1
+ 8000876:	d111      	bne.n	800089c <main_fsm+0x188>
 				setTimer2(AMBER_TIME);
- 8000880:	4b59      	ldr	r3, [pc, #356]	; (80009e8 <main_fsm+0x2d4>)
- 8000882:	681b      	ldr	r3, [r3, #0]
- 8000884:	4618      	mov	r0, r3
- 8000886:	f000 fb71 	bl	8000f6c <setTimer2>
+ 8000878:	4b59      	ldr	r3, [pc, #356]	; (80009e0 <main_fsm+0x2cc>)
+ 800087a:	681b      	ldr	r3, [r3, #0]
+ 800087c:	4618      	mov	r0, r3
+ 800087e:	f000 fb75 	bl	8000f6c <setTimer2>
 				counter1 = AMBER_TIME/100;
- 800088a:	4b57      	ldr	r3, [pc, #348]	; (80009e8 <main_fsm+0x2d4>)
- 800088c:	681b      	ldr	r3, [r3, #0]
- 800088e:	4a52      	ldr	r2, [pc, #328]	; (80009d8 <main_fsm+0x2c4>)
- 8000890:	fb82 1203 	smull	r1, r2, r2, r3
- 8000894:	1152      	asrs	r2, r2, #5
- 8000896:	17db      	asrs	r3, r3, #31
- 8000898:	1ad3      	subs	r3, r2, r3
- 800089a:	4a50      	ldr	r2, [pc, #320]	; (80009dc <main_fsm+0x2c8>)
- 800089c:	6013      	str	r3, [r2, #0]
+ 8000882:	4b57      	ldr	r3, [pc, #348]	; (80009e0 <main_fsm+0x2cc>)
+ 8000884:	681b      	ldr	r3, [r3, #0]
+ 8000886:	4a52      	ldr	r2, [pc, #328]	; (80009d0 <main_fsm+0x2bc>)
+ 8000888:	fb82 1203 	smull	r1, r2, r2, r3
+ 800088c:	1152      	asrs	r2, r2, #5
+ 800088e:	17db      	asrs	r3, r3, #31
+ 8000890:	1ad3      	subs	r3, r2, r3
+ 8000892:	4a50      	ldr	r2, [pc, #320]	; (80009d4 <main_fsm+0x2c0>)
+ 8000894:	6013      	str	r3, [r2, #0]
 				status = AMBER_RED;
- 800089e:	4b4b      	ldr	r3, [pc, #300]	; (80009cc <main_fsm+0x2b8>)
- 80008a0:	2205      	movs	r2, #5
- 80008a2:	601a      	str	r2, [r3, #0]
+ 8000896:	4b4b      	ldr	r3, [pc, #300]	; (80009c4 <main_fsm+0x2b0>)
+ 8000898:	2205      	movs	r2, #5
+ 800089a:	601a      	str	r2, [r3, #0]
 			}
 			if(isButton1Pressed() == 1) {
- 80008a4:	f7ff fcc6 	bl	8000234 <isButton1Pressed>
- 80008a8:	4603      	mov	r3, r0
- 80008aa:	2b01      	cmp	r3, #1
- 80008ac:	f040 818a 	bne.w	8000bc4 <main_fsm+0x4b0>
+ 800089c:	f7ff fcca 	bl	8000234 <isButton1Pressed>
+ 80008a0:	4603      	mov	r3, r0
+ 80008a2:	2b01      	cmp	r3, #1
+ 80008a4:	f040 818a 	bne.w	8000bbc <main_fsm+0x4a8>
 				clearAllLed();
- 80008b0:	f000 fa0c 	bl	8000ccc <clearAllLed>
+ 80008a8:	f000 fa10 	bl	8000ccc <clearAllLed>
 				setTimer4(25);
- 80008b4:	2019      	movs	r0, #25
- 80008b6:	f000 fb6d 	bl	8000f94 <setTimer4>
+ 80008ac:	2019      	movs	r0, #25
+ 80008ae:	f000 fb71 	bl	8000f94 <setTimer4>
 				status = INC_RED;
- 80008ba:	4b44      	ldr	r3, [pc, #272]	; (80009cc <main_fsm+0x2b8>)
- 80008bc:	2206      	movs	r2, #6
- 80008be:	601a      	str	r2, [r3, #0]
+ 80008b2:	4b44      	ldr	r3, [pc, #272]	; (80009c4 <main_fsm+0x2b0>)
+ 80008b4:	2206      	movs	r2, #6
+ 80008b6:	601a      	str	r2, [r3, #0]
 				RED_OLD_TIME = RED_TIME;
- 80008c0:	4b44      	ldr	r3, [pc, #272]	; (80009d4 <main_fsm+0x2c0>)
- 80008c2:	681b      	ldr	r3, [r3, #0]
- 80008c4:	4a49      	ldr	r2, [pc, #292]	; (80009ec <main_fsm+0x2d8>)
- 80008c6:	6013      	str	r3, [r2, #0]
+ 80008b8:	4b44      	ldr	r3, [pc, #272]	; (80009cc <main_fsm+0x2b8>)
+ 80008ba:	681b      	ldr	r3, [r3, #0]
+ 80008bc:	4a49      	ldr	r2, [pc, #292]	; (80009e4 <main_fsm+0x2d0>)
+ 80008be:	6013      	str	r3, [r2, #0]
 			}
 			break;
- 80008c8:	e17c      	b.n	8000bc4 <main_fsm+0x4b0>
+ 80008c0:	e17c      	b.n	8000bbc <main_fsm+0x4a8>
 		case AMBER_RED:
 			setLedOnWay1(AMBER_LED);
- 80008ca:	200b      	movs	r0, #11
- 80008cc:	f000 f9a2 	bl	8000c14 <setLedOnWay1>
+ 80008c2:	200b      	movs	r0, #11
+ 80008c4:	f000 f9a6 	bl	8000c14 <setLedOnWay1>
 			setLedOnWay2(RED_LED);
- 80008d0:	200a      	movs	r0, #10
- 80008d2:	f000 f9cd 	bl	8000c70 <setLedOnWay2>
+ 80008c8:	200a      	movs	r0, #10
+ 80008ca:	f000 f9d1 	bl	8000c70 <setLedOnWay2>
 			if(timer2_flag == 1) {
- 80008d6:	4b43      	ldr	r3, [pc, #268]	; (80009e4 <main_fsm+0x2d0>)
- 80008d8:	681b      	ldr	r3, [r3, #0]
- 80008da:	2b01      	cmp	r3, #1
- 80008dc:	d11b      	bne.n	8000916 <main_fsm+0x202>
+ 80008ce:	4b43      	ldr	r3, [pc, #268]	; (80009dc <main_fsm+0x2c8>)
+ 80008d0:	681b      	ldr	r3, [r3, #0]
+ 80008d2:	2b01      	cmp	r3, #1
+ 80008d4:	d11b      	bne.n	800090e <main_fsm+0x1fa>
 				setTimer2(GREEN_TIME);
- 80008de:	4b3c      	ldr	r3, [pc, #240]	; (80009d0 <main_fsm+0x2bc>)
- 80008e0:	681b      	ldr	r3, [r3, #0]
- 80008e2:	4618      	mov	r0, r3
- 80008e4:	f000 fb42 	bl	8000f6c <setTimer2>
+ 80008d6:	4b3c      	ldr	r3, [pc, #240]	; (80009c8 <main_fsm+0x2b4>)
+ 80008d8:	681b      	ldr	r3, [r3, #0]
+ 80008da:	4618      	mov	r0, r3
+ 80008dc:	f000 fb46 	bl	8000f6c <setTimer2>
 				counter1 = RED_TIME/100;
- 80008e8:	4b3a      	ldr	r3, [pc, #232]	; (80009d4 <main_fsm+0x2c0>)
- 80008ea:	681b      	ldr	r3, [r3, #0]
- 80008ec:	4a3a      	ldr	r2, [pc, #232]	; (80009d8 <main_fsm+0x2c4>)
- 80008ee:	fb82 1203 	smull	r1, r2, r2, r3
- 80008f2:	1152      	asrs	r2, r2, #5
- 80008f4:	17db      	asrs	r3, r3, #31
- 80008f6:	1ad3      	subs	r3, r2, r3
- 80008f8:	4a38      	ldr	r2, [pc, #224]	; (80009dc <main_fsm+0x2c8>)
- 80008fa:	6013      	str	r3, [r2, #0]
+ 80008e0:	4b3a      	ldr	r3, [pc, #232]	; (80009cc <main_fsm+0x2b8>)
+ 80008e2:	681b      	ldr	r3, [r3, #0]
+ 80008e4:	4a3a      	ldr	r2, [pc, #232]	; (80009d0 <main_fsm+0x2bc>)
+ 80008e6:	fb82 1203 	smull	r1, r2, r2, r3
+ 80008ea:	1152      	asrs	r2, r2, #5
+ 80008ec:	17db      	asrs	r3, r3, #31
+ 80008ee:	1ad3      	subs	r3, r2, r3
+ 80008f0:	4a38      	ldr	r2, [pc, #224]	; (80009d4 <main_fsm+0x2c0>)
+ 80008f2:	6013      	str	r3, [r2, #0]
 				counter2 = GREEN_TIME/100;
- 80008fc:	4b34      	ldr	r3, [pc, #208]	; (80009d0 <main_fsm+0x2bc>)
- 80008fe:	681b      	ldr	r3, [r3, #0]
- 8000900:	4a35      	ldr	r2, [pc, #212]	; (80009d8 <main_fsm+0x2c4>)
- 8000902:	fb82 1203 	smull	r1, r2, r2, r3
- 8000906:	1152      	asrs	r2, r2, #5
- 8000908:	17db      	asrs	r3, r3, #31
- 800090a:	1ad3      	subs	r3, r2, r3
- 800090c:	4a34      	ldr	r2, [pc, #208]	; (80009e0 <main_fsm+0x2cc>)
- 800090e:	6013      	str	r3, [r2, #0]
+ 80008f4:	4b34      	ldr	r3, [pc, #208]	; (80009c8 <main_fsm+0x2b4>)
+ 80008f6:	681b      	ldr	r3, [r3, #0]
+ 80008f8:	4a35      	ldr	r2, [pc, #212]	; (80009d0 <main_fsm+0x2bc>)
+ 80008fa:	fb82 1203 	smull	r1, r2, r2, r3
+ 80008fe:	1152      	asrs	r2, r2, #5
+ 8000900:	17db      	asrs	r3, r3, #31
+ 8000902:	1ad3      	subs	r3, r2, r3
+ 8000904:	4a34      	ldr	r2, [pc, #208]	; (80009d8 <main_fsm+0x2c4>)
+ 8000906:	6013      	str	r3, [r2, #0]
 				status = RED_GREEN;
- 8000910:	4b2e      	ldr	r3, [pc, #184]	; (80009cc <main_fsm+0x2b8>)
- 8000912:	2202      	movs	r2, #2
- 8000914:	601a      	str	r2, [r3, #0]
+ 8000908:	4b2e      	ldr	r3, [pc, #184]	; (80009c4 <main_fsm+0x2b0>)
+ 800090a:	2202      	movs	r2, #2
+ 800090c:	601a      	str	r2, [r3, #0]
 			}
 			if(isButton1Pressed() == 1) {
- 8000916:	f7ff fc8d 	bl	8000234 <isButton1Pressed>
- 800091a:	4603      	mov	r3, r0
- 800091c:	2b01      	cmp	r3, #1
- 800091e:	f040 8153 	bne.w	8000bc8 <main_fsm+0x4b4>
+ 800090e:	f7ff fc91 	bl	8000234 <isButton1Pressed>
+ 8000912:	4603      	mov	r3, r0
+ 8000914:	2b01      	cmp	r3, #1
+ 8000916:	f040 8153 	bne.w	8000bc0 <main_fsm+0x4ac>
 				clearAllLed();
- 8000922:	f000 f9d3 	bl	8000ccc <clearAllLed>
+ 800091a:	f000 f9d7 	bl	8000ccc <clearAllLed>
 				setTimer4(25);
- 8000926:	2019      	movs	r0, #25
- 8000928:	f000 fb34 	bl	8000f94 <setTimer4>
+ 800091e:	2019      	movs	r0, #25
+ 8000920:	f000 fb38 	bl	8000f94 <setTimer4>
 				status = INC_RED;
- 800092c:	4b27      	ldr	r3, [pc, #156]	; (80009cc <main_fsm+0x2b8>)
- 800092e:	2206      	movs	r2, #6
- 8000930:	601a      	str	r2, [r3, #0]
+ 8000924:	4b27      	ldr	r3, [pc, #156]	; (80009c4 <main_fsm+0x2b0>)
+ 8000926:	2206      	movs	r2, #6
+ 8000928:	601a      	str	r2, [r3, #0]
 				RED_OLD_TIME = RED_TIME;
- 8000932:	4b28      	ldr	r3, [pc, #160]	; (80009d4 <main_fsm+0x2c0>)
- 8000934:	681b      	ldr	r3, [r3, #0]
- 8000936:	4a2d      	ldr	r2, [pc, #180]	; (80009ec <main_fsm+0x2d8>)
- 8000938:	6013      	str	r3, [r2, #0]
+ 800092a:	4b28      	ldr	r3, [pc, #160]	; (80009cc <main_fsm+0x2b8>)
+ 800092c:	681b      	ldr	r3, [r3, #0]
+ 800092e:	4a2d      	ldr	r2, [pc, #180]	; (80009e4 <main_fsm+0x2d0>)
+ 8000930:	6013      	str	r3, [r2, #0]
 			}
 			break;
- 800093a:	e145      	b.n	8000bc8 <main_fsm+0x4b4>
+ 8000932:	e145      	b.n	8000bc0 <main_fsm+0x4ac>
 		case INC_RED:
 			red_led_blinky();
- 800093c:	f7ff fc06 	bl	800014c <red_led_blinky>
+ 8000934:	f7ff fc0a 	bl	800014c <red_led_blinky>
 			updateBuffer7SEG(2, RED_TIME/100);
- 8000940:	4b24      	ldr	r3, [pc, #144]	; (80009d4 <main_fsm+0x2c0>)
- 8000942:	681b      	ldr	r3, [r3, #0]
- 8000944:	4a24      	ldr	r2, [pc, #144]	; (80009d8 <main_fsm+0x2c4>)
- 8000946:	fb82 1203 	smull	r1, r2, r2, r3
- 800094a:	1152      	asrs	r2, r2, #5
- 800094c:	17db      	asrs	r3, r3, #31
- 800094e:	1ad3      	subs	r3, r2, r3
- 8000950:	4619      	mov	r1, r3
- 8000952:	2002      	movs	r0, #2
- 8000954:	f7ff fe1c 	bl	8000590 <updateBuffer7SEG>
+ 8000938:	4b24      	ldr	r3, [pc, #144]	; (80009cc <main_fsm+0x2b8>)
+ 800093a:	681b      	ldr	r3, [r3, #0]
+ 800093c:	4a24      	ldr	r2, [pc, #144]	; (80009d0 <main_fsm+0x2bc>)
+ 800093e:	fb82 1203 	smull	r1, r2, r2, r3
+ 8000942:	1152      	asrs	r2, r2, #5
+ 8000944:	17db      	asrs	r3, r3, #31
+ 8000946:	1ad3      	subs	r3, r2, r3
+ 8000948:	4619      	mov	r1, r3
+ 800094a:	2002      	movs	r0, #2
+ 800094c:	f7ff fe20 	bl	8000590 <updateBuffer7SEG>
 			if(isButton1Pressed() == 1){
- 8000958:	f7ff fc6c 	bl	8000234 <isButton1Pressed>
- 800095c:	4603      	mov	r3, r0
- 800095e:	2b01      	cmp	r3, #1
- 8000960:	d116      	bne.n	8000990 <main_fsm+0x27c>
+ 8000950:	f7ff fc70 	bl	8000234 <isButton1Pressed>
+ 8000954:	4603      	mov	r3, r0
+ 8000956:	2b01      	cmp	r3, #1
+ 8000958:	d116      	bne.n	8000988 <main_fsm+0x274>
 				if(flag_red_change == 0){
- 8000962:	4b23      	ldr	r3, [pc, #140]	; (80009f0 <main_fsm+0x2dc>)
- 8000964:	681b      	ldr	r3, [r3, #0]
- 8000966:	2b00      	cmp	r3, #0
- 8000968:	d103      	bne.n	8000972 <main_fsm+0x25e>
+ 800095a:	4b23      	ldr	r3, [pc, #140]	; (80009e8 <main_fsm+0x2d4>)
+ 800095c:	681b      	ldr	r3, [r3, #0]
+ 800095e:	2b00      	cmp	r3, #0
+ 8000960:	d103      	bne.n	800096a <main_fsm+0x256>
 					RED_TIME = RED_OLD_TIME;
- 800096a:	4b20      	ldr	r3, [pc, #128]	; (80009ec <main_fsm+0x2d8>)
- 800096c:	681b      	ldr	r3, [r3, #0]
- 800096e:	4a19      	ldr	r2, [pc, #100]	; (80009d4 <main_fsm+0x2c0>)
- 8000970:	6013      	str	r3, [r2, #0]
+ 8000962:	4b20      	ldr	r3, [pc, #128]	; (80009e4 <main_fsm+0x2d0>)
+ 8000964:	681b      	ldr	r3, [r3, #0]
+ 8000966:	4a19      	ldr	r2, [pc, #100]	; (80009cc <main_fsm+0x2b8>)
+ 8000968:	6013      	str	r3, [r2, #0]
 				}
 				flag_red_change = 0;
- 8000972:	4b1f      	ldr	r3, [pc, #124]	; (80009f0 <main_fsm+0x2dc>)
- 8000974:	2200      	movs	r2, #0
- 8000976:	601a      	str	r2, [r3, #0]
+ 800096a:	4b1f      	ldr	r3, [pc, #124]	; (80009e8 <main_fsm+0x2d4>)
+ 800096c:	2200      	movs	r2, #0
+ 800096e:	601a      	str	r2, [r3, #0]
 				clearAllLed();
- 8000978:	f000 f9a8 	bl	8000ccc <clearAllLed>
+ 8000970:	f000 f9ac 	bl	8000ccc <clearAllLed>
 				setTimer4(25);
- 800097c:	2019      	movs	r0, #25
- 800097e:	f000 fb09 	bl	8000f94 <setTimer4>
+ 8000974:	2019      	movs	r0, #25
+ 8000976:	f000 fb0d 	bl	8000f94 <setTimer4>
 				status = INC_AMBER;
- 8000982:	4b12      	ldr	r3, [pc, #72]	; (80009cc <main_fsm+0x2b8>)
- 8000984:	2207      	movs	r2, #7
- 8000986:	601a      	str	r2, [r3, #0]
+ 800097a:	4b12      	ldr	r3, [pc, #72]	; (80009c4 <main_fsm+0x2b0>)
+ 800097c:	2207      	movs	r2, #7
+ 800097e:	601a      	str	r2, [r3, #0]
 				AMBER_OLD_TIME = AMBER_TIME;
- 8000988:	4b17      	ldr	r3, [pc, #92]	; (80009e8 <main_fsm+0x2d4>)
- 800098a:	681b      	ldr	r3, [r3, #0]
- 800098c:	4a19      	ldr	r2, [pc, #100]	; (80009f4 <main_fsm+0x2e0>)
- 800098e:	6013      	str	r3, [r2, #0]
+ 8000980:	4b17      	ldr	r3, [pc, #92]	; (80009e0 <main_fsm+0x2cc>)
+ 8000982:	681b      	ldr	r3, [r3, #0]
+ 8000984:	4a19      	ldr	r2, [pc, #100]	; (80009ec <main_fsm+0x2d8>)
+ 8000986:	6013      	str	r3, [r2, #0]
 			}
 			if(isButton2Pressed() == 1){
- 8000990:	f7ff fc62 	bl	8000258 <isButton2Pressed>
- 8000994:	4603      	mov	r3, r0
- 8000996:	2b01      	cmp	r3, #1
- 8000998:	d10d      	bne.n	80009b6 <main_fsm+0x2a2>
+ 8000988:	f7ff fc66 	bl	8000258 <isButton2Pressed>
+ 800098c:	4603      	mov	r3, r0
+ 800098e:	2b01      	cmp	r3, #1
+ 8000990:	d10d      	bne.n	80009ae <main_fsm+0x29a>
 				RED_TIME += 100;
- 800099a:	4b0e      	ldr	r3, [pc, #56]	; (80009d4 <main_fsm+0x2c0>)
- 800099c:	681b      	ldr	r3, [r3, #0]
- 800099e:	3364      	adds	r3, #100	; 0x64
- 80009a0:	4a0c      	ldr	r2, [pc, #48]	; (80009d4 <main_fsm+0x2c0>)
- 80009a2:	6013      	str	r3, [r2, #0]
+ 8000992:	4b0e      	ldr	r3, [pc, #56]	; (80009cc <main_fsm+0x2b8>)
+ 8000994:	681b      	ldr	r3, [r3, #0]
+ 8000996:	3364      	adds	r3, #100	; 0x64
+ 8000998:	4a0c      	ldr	r2, [pc, #48]	; (80009cc <main_fsm+0x2b8>)
+ 800099a:	6013      	str	r3, [r2, #0]
 				if(RED_TIME >= 10000) RED_TIME = 100;
- 80009a4:	4b0b      	ldr	r3, [pc, #44]	; (80009d4 <main_fsm+0x2c0>)
- 80009a6:	681b      	ldr	r3, [r3, #0]
- 80009a8:	f242 720f 	movw	r2, #9999	; 0x270f
- 80009ac:	4293      	cmp	r3, r2
- 80009ae:	dd02      	ble.n	80009b6 <main_fsm+0x2a2>
- 80009b0:	4b08      	ldr	r3, [pc, #32]	; (80009d4 <main_fsm+0x2c0>)
- 80009b2:	2264      	movs	r2, #100	; 0x64
- 80009b4:	601a      	str	r2, [r3, #0]
+ 800099c:	4b0b      	ldr	r3, [pc, #44]	; (80009cc <main_fsm+0x2b8>)
+ 800099e:	681b      	ldr	r3, [r3, #0]
+ 80009a0:	f242 720f 	movw	r2, #9999	; 0x270f
+ 80009a4:	4293      	cmp	r3, r2
+ 80009a6:	dd02      	ble.n	80009ae <main_fsm+0x29a>
+ 80009a8:	4b08      	ldr	r3, [pc, #32]	; (80009cc <main_fsm+0x2b8>)
+ 80009aa:	2264      	movs	r2, #100	; 0x64
+ 80009ac:	601a      	str	r2, [r3, #0]
 			}
 			if(isButton3Pressed() == 1){
- 80009b6:	f7ff fc61 	bl	800027c <isButton3Pressed>
- 80009ba:	4603      	mov	r3, r0
- 80009bc:	2b01      	cmp	r3, #1
- 80009be:	f040 8105 	bne.w	8000bcc <main_fsm+0x4b8>
+ 80009ae:	f7ff fc65 	bl	800027c <isButton3Pressed>
+ 80009b2:	4603      	mov	r3, r0
+ 80009b4:	2b01      	cmp	r3, #1
+ 80009b6:	f040 8105 	bne.w	8000bc4 <main_fsm+0x4b0>
 				flag_red_change = 1;
- 80009c2:	4b0b      	ldr	r3, [pc, #44]	; (80009f0 <main_fsm+0x2dc>)
- 80009c4:	2201      	movs	r2, #1
- 80009c6:	601a      	str	r2, [r3, #0]
+ 80009ba:	4b0b      	ldr	r3, [pc, #44]	; (80009e8 <main_fsm+0x2d4>)
+ 80009bc:	2201      	movs	r2, #1
+ 80009be:	601a      	str	r2, [r3, #0]
 			}
 			break;
- 80009c8:	e100      	b.n	8000bcc <main_fsm+0x4b8>
- 80009ca:	bf00      	nop
- 80009cc:	20000038 	.word	0x20000038
- 80009d0:	20000034 	.word	0x20000034
- 80009d4:	2000002c 	.word	0x2000002c
- 80009d8:	51eb851f 	.word	0x51eb851f
- 80009dc:	2000003c 	.word	0x2000003c
- 80009e0:	20000040 	.word	0x20000040
- 80009e4:	200000f4 	.word	0x200000f4
- 80009e8:	20000030 	.word	0x20000030
- 80009ec:	20000020 	.word	0x20000020
- 80009f0:	20000094 	.word	0x20000094
- 80009f4:	20000024 	.word	0x20000024
+ 80009c0:	e100      	b.n	8000bc4 <main_fsm+0x4b0>
+ 80009c2:	bf00      	nop
+ 80009c4:	20000038 	.word	0x20000038
+ 80009c8:	20000034 	.word	0x20000034
+ 80009cc:	2000002c 	.word	0x2000002c
+ 80009d0:	51eb851f 	.word	0x51eb851f
+ 80009d4:	2000003c 	.word	0x2000003c
+ 80009d8:	20000040 	.word	0x20000040
+ 80009dc:	200000f4 	.word	0x200000f4
+ 80009e0:	20000030 	.word	0x20000030
+ 80009e4:	20000020 	.word	0x20000020
+ 80009e8:	20000094 	.word	0x20000094
+ 80009ec:	20000024 	.word	0x20000024
 		case INC_AMBER:
 			amber_led_blinky();
- 80009f8:	f7ff fbc2 	bl	8000180 <amber_led_blinky>
+ 80009f0:	f7ff fbc6 	bl	8000180 <amber_led_blinky>
 			updateBuffer7SEG(3, AMBER_TIME/100);
- 80009fc:	4b78      	ldr	r3, [pc, #480]	; (8000be0 <main_fsm+0x4cc>)
- 80009fe:	681b      	ldr	r3, [r3, #0]
- 8000a00:	4a78      	ldr	r2, [pc, #480]	; (8000be4 <main_fsm+0x4d0>)
- 8000a02:	fb82 1203 	smull	r1, r2, r2, r3
- 8000a06:	1152      	asrs	r2, r2, #5
- 8000a08:	17db      	asrs	r3, r3, #31
- 8000a0a:	1ad3      	subs	r3, r2, r3
- 8000a0c:	4619      	mov	r1, r3
- 8000a0e:	2003      	movs	r0, #3
- 8000a10:	f7ff fdbe 	bl	8000590 <updateBuffer7SEG>
+ 80009f4:	4b7a      	ldr	r3, [pc, #488]	; (8000be0 <main_fsm+0x4cc>)
+ 80009f6:	681b      	ldr	r3, [r3, #0]
+ 80009f8:	4a7a      	ldr	r2, [pc, #488]	; (8000be4 <main_fsm+0x4d0>)
+ 80009fa:	fb82 1203 	smull	r1, r2, r2, r3
+ 80009fe:	1152      	asrs	r2, r2, #5
+ 8000a00:	17db      	asrs	r3, r3, #31
+ 8000a02:	1ad3      	subs	r3, r2, r3
+ 8000a04:	4619      	mov	r1, r3
+ 8000a06:	2003      	movs	r0, #3
+ 8000a08:	f7ff fdc2 	bl	8000590 <updateBuffer7SEG>
 			//display mode and time for AMBER_LED
 			if(isButton1Pressed() == 1){
- 8000a14:	f7ff fc0e 	bl	8000234 <isButton1Pressed>
- 8000a18:	4603      	mov	r3, r0
- 8000a1a:	2b01      	cmp	r3, #1
- 8000a1c:	d116      	bne.n	8000a4c <main_fsm+0x338>
+ 8000a0c:	f7ff fc12 	bl	8000234 <isButton1Pressed>
+ 8000a10:	4603      	mov	r3, r0
+ 8000a12:	2b01      	cmp	r3, #1
+ 8000a14:	d116      	bne.n	8000a44 <main_fsm+0x330>
 				if(flag_yellow_change == 0){
- 8000a1e:	4b72      	ldr	r3, [pc, #456]	; (8000be8 <main_fsm+0x4d4>)
- 8000a20:	681b      	ldr	r3, [r3, #0]
- 8000a22:	2b00      	cmp	r3, #0
- 8000a24:	d103      	bne.n	8000a2e <main_fsm+0x31a>
+ 8000a16:	4b74      	ldr	r3, [pc, #464]	; (8000be8 <main_fsm+0x4d4>)
+ 8000a18:	681b      	ldr	r3, [r3, #0]
+ 8000a1a:	2b00      	cmp	r3, #0
+ 8000a1c:	d103      	bne.n	8000a26 <main_fsm+0x312>
 					AMBER_TIME = AMBER_OLD_TIME;
- 8000a26:	4b71      	ldr	r3, [pc, #452]	; (8000bec <main_fsm+0x4d8>)
- 8000a28:	681b      	ldr	r3, [r3, #0]
- 8000a2a:	4a6d      	ldr	r2, [pc, #436]	; (8000be0 <main_fsm+0x4cc>)
- 8000a2c:	6013      	str	r3, [r2, #0]
+ 8000a1e:	4b73      	ldr	r3, [pc, #460]	; (8000bec <main_fsm+0x4d8>)
+ 8000a20:	681b      	ldr	r3, [r3, #0]
+ 8000a22:	4a6f      	ldr	r2, [pc, #444]	; (8000be0 <main_fsm+0x4cc>)
+ 8000a24:	6013      	str	r3, [r2, #0]
 				}
 				flag_yellow_change = 0;
- 8000a2e:	4b6e      	ldr	r3, [pc, #440]	; (8000be8 <main_fsm+0x4d4>)
- 8000a30:	2200      	movs	r2, #0
- 8000a32:	601a      	str	r2, [r3, #0]
+ 8000a26:	4b70      	ldr	r3, [pc, #448]	; (8000be8 <main_fsm+0x4d4>)
+ 8000a28:	2200      	movs	r2, #0
+ 8000a2a:	601a      	str	r2, [r3, #0]
 				clearAllLed();
- 8000a34:	f000 f94a 	bl	8000ccc <clearAllLed>
+ 8000a2c:	f000 f94e 	bl	8000ccc <clearAllLed>
 				setTimer4(25);
- 8000a38:	2019      	movs	r0, #25
- 8000a3a:	f000 faab 	bl	8000f94 <setTimer4>
+ 8000a30:	2019      	movs	r0, #25
+ 8000a32:	f000 faaf 	bl	8000f94 <setTimer4>
 				status = INC_GREEN;
- 8000a3e:	4b6c      	ldr	r3, [pc, #432]	; (8000bf0 <main_fsm+0x4dc>)
- 8000a40:	2208      	movs	r2, #8
- 8000a42:	601a      	str	r2, [r3, #0]
+ 8000a36:	4b6e      	ldr	r3, [pc, #440]	; (8000bf0 <main_fsm+0x4dc>)
+ 8000a38:	2208      	movs	r2, #8
+ 8000a3a:	601a      	str	r2, [r3, #0]
 				GREEN_OLD_TIME = GREEN_TIME;
- 8000a44:	4b6b      	ldr	r3, [pc, #428]	; (8000bf4 <main_fsm+0x4e0>)
- 8000a46:	681b      	ldr	r3, [r3, #0]
- 8000a48:	4a6b      	ldr	r2, [pc, #428]	; (8000bf8 <main_fsm+0x4e4>)
- 8000a4a:	6013      	str	r3, [r2, #0]
+ 8000a3c:	4b6d      	ldr	r3, [pc, #436]	; (8000bf4 <main_fsm+0x4e0>)
+ 8000a3e:	681b      	ldr	r3, [r3, #0]
+ 8000a40:	4a6d      	ldr	r2, [pc, #436]	; (8000bf8 <main_fsm+0x4e4>)
+ 8000a42:	6013      	str	r3, [r2, #0]
 			}
 			if(isButton2Pressed() == 1){
- 8000a4c:	f7ff fc04 	bl	8000258 <isButton2Pressed>
- 8000a50:	4603      	mov	r3, r0
- 8000a52:	2b01      	cmp	r3, #1
- 8000a54:	d10d      	bne.n	8000a72 <main_fsm+0x35e>
+ 8000a44:	f7ff fc08 	bl	8000258 <isButton2Pressed>
+ 8000a48:	4603      	mov	r3, r0
+ 8000a4a:	2b01      	cmp	r3, #1
+ 8000a4c:	d10d      	bne.n	8000a6a <main_fsm+0x356>
 				AMBER_TIME += 100;
- 8000a56:	4b62      	ldr	r3, [pc, #392]	; (8000be0 <main_fsm+0x4cc>)
- 8000a58:	681b      	ldr	r3, [r3, #0]
- 8000a5a:	3364      	adds	r3, #100	; 0x64
- 8000a5c:	4a60      	ldr	r2, [pc, #384]	; (8000be0 <main_fsm+0x4cc>)
- 8000a5e:	6013      	str	r3, [r2, #0]
+ 8000a4e:	4b64      	ldr	r3, [pc, #400]	; (8000be0 <main_fsm+0x4cc>)
+ 8000a50:	681b      	ldr	r3, [r3, #0]
+ 8000a52:	3364      	adds	r3, #100	; 0x64
+ 8000a54:	4a62      	ldr	r2, [pc, #392]	; (8000be0 <main_fsm+0x4cc>)
+ 8000a56:	6013      	str	r3, [r2, #0]
 				if(AMBER_TIME >= 10000) AMBER_TIME = 100;
- 8000a60:	4b5f      	ldr	r3, [pc, #380]	; (8000be0 <main_fsm+0x4cc>)
- 8000a62:	681b      	ldr	r3, [r3, #0]
- 8000a64:	f242 720f 	movw	r2, #9999	; 0x270f
- 8000a68:	4293      	cmp	r3, r2
- 8000a6a:	dd02      	ble.n	8000a72 <main_fsm+0x35e>
- 8000a6c:	4b5c      	ldr	r3, [pc, #368]	; (8000be0 <main_fsm+0x4cc>)
- 8000a6e:	2264      	movs	r2, #100	; 0x64
- 8000a70:	601a      	str	r2, [r3, #0]
+ 8000a58:	4b61      	ldr	r3, [pc, #388]	; (8000be0 <main_fsm+0x4cc>)
+ 8000a5a:	681b      	ldr	r3, [r3, #0]
+ 8000a5c:	f242 720f 	movw	r2, #9999	; 0x270f
+ 8000a60:	4293      	cmp	r3, r2
+ 8000a62:	dd02      	ble.n	8000a6a <main_fsm+0x356>
+ 8000a64:	4b5e      	ldr	r3, [pc, #376]	; (8000be0 <main_fsm+0x4cc>)
+ 8000a66:	2264      	movs	r2, #100	; 0x64
+ 8000a68:	601a      	str	r2, [r3, #0]
 			}
 			if(isButton3Pressed() == 1){
- 8000a72:	f7ff fc03 	bl	800027c <isButton3Pressed>
- 8000a76:	4603      	mov	r3, r0
- 8000a78:	2b01      	cmp	r3, #1
- 8000a7a:	f040 80a9 	bne.w	8000bd0 <main_fsm+0x4bc>
+ 8000a6a:	f7ff fc07 	bl	800027c <isButton3Pressed>
+ 8000a6e:	4603      	mov	r3, r0
+ 8000a70:	2b01      	cmp	r3, #1
+ 8000a72:	f040 80a9 	bne.w	8000bc8 <main_fsm+0x4b4>
 				flag_yellow_change = 1;
- 8000a7e:	4b5a      	ldr	r3, [pc, #360]	; (8000be8 <main_fsm+0x4d4>)
- 8000a80:	2201      	movs	r2, #1
- 8000a82:	601a      	str	r2, [r3, #0]
+ 8000a76:	4b5c      	ldr	r3, [pc, #368]	; (8000be8 <main_fsm+0x4d4>)
+ 8000a78:	2201      	movs	r2, #1
+ 8000a7a:	601a      	str	r2, [r3, #0]
 			}
 			break;
- 8000a84:	e0a4      	b.n	8000bd0 <main_fsm+0x4bc>
+ 8000a7c:	e0a4      	b.n	8000bc8 <main_fsm+0x4b4>
 		case INC_GREEN:
 			green_led_blinky();
- 8000a86:	f7ff fb95 	bl	80001b4 <green_led_blinky>
+ 8000a7e:	f7ff fb99 	bl	80001b4 <green_led_blinky>
 			updateBuffer7SEG(4, GREEN_TIME/100);
- 8000a8a:	4b5a      	ldr	r3, [pc, #360]	; (8000bf4 <main_fsm+0x4e0>)
- 8000a8c:	681b      	ldr	r3, [r3, #0]
- 8000a8e:	4a55      	ldr	r2, [pc, #340]	; (8000be4 <main_fsm+0x4d0>)
- 8000a90:	fb82 1203 	smull	r1, r2, r2, r3
- 8000a94:	1152      	asrs	r2, r2, #5
- 8000a96:	17db      	asrs	r3, r3, #31
- 8000a98:	1ad3      	subs	r3, r2, r3
- 8000a9a:	4619      	mov	r1, r3
- 8000a9c:	2004      	movs	r0, #4
- 8000a9e:	f7ff fd77 	bl	8000590 <updateBuffer7SEG>
+ 8000a82:	4b5c      	ldr	r3, [pc, #368]	; (8000bf4 <main_fsm+0x4e0>)
+ 8000a84:	681b      	ldr	r3, [r3, #0]
+ 8000a86:	4a57      	ldr	r2, [pc, #348]	; (8000be4 <main_fsm+0x4d0>)
+ 8000a88:	fb82 1203 	smull	r1, r2, r2, r3
+ 8000a8c:	1152      	asrs	r2, r2, #5
+ 8000a8e:	17db      	asrs	r3, r3, #31
+ 8000a90:	1ad3      	subs	r3, r2, r3
+ 8000a92:	4619      	mov	r1, r3
+ 8000a94:	2004      	movs	r0, #4
+ 8000a96:	f7ff fd7b 	bl	8000590 <updateBuffer7SEG>
 
 			//display mode and time for GREEN_LED
 			if(isButton1Pressed() == 1){
- 8000aa2:	f7ff fbc7 	bl	8000234 <isButton1Pressed>
- 8000aa6:	4603      	mov	r3, r0
- 8000aa8:	2b01      	cmp	r3, #1
- 8000aaa:	d136      	bne.n	8000b1a <main_fsm+0x406>
+ 8000a9a:	f7ff fbcb 	bl	8000234 <isButton1Pressed>
+ 8000a9e:	4603      	mov	r3, r0
+ 8000aa0:	2b01      	cmp	r3, #1
+ 8000aa2:	d136      	bne.n	8000b12 <main_fsm+0x3fe>
 				if(flag_green_change == 0){
- 8000aac:	4b53      	ldr	r3, [pc, #332]	; (8000bfc <main_fsm+0x4e8>)
- 8000aae:	681b      	ldr	r3, [r3, #0]
- 8000ab0:	2b00      	cmp	r3, #0
- 8000ab2:	d103      	bne.n	8000abc <main_fsm+0x3a8>
+ 8000aa4:	4b55      	ldr	r3, [pc, #340]	; (8000bfc <main_fsm+0x4e8>)
+ 8000aa6:	681b      	ldr	r3, [r3, #0]
+ 8000aa8:	2b00      	cmp	r3, #0
+ 8000aaa:	d103      	bne.n	8000ab4 <main_fsm+0x3a0>
 					GREEN_TIME = GREEN_OLD_TIME;
- 8000ab4:	4b50      	ldr	r3, [pc, #320]	; (8000bf8 <main_fsm+0x4e4>)
- 8000ab6:	681b      	ldr	r3, [r3, #0]
- 8000ab8:	4a4e      	ldr	r2, [pc, #312]	; (8000bf4 <main_fsm+0x4e0>)
- 8000aba:	6013      	str	r3, [r2, #0]
+ 8000aac:	4b52      	ldr	r3, [pc, #328]	; (8000bf8 <main_fsm+0x4e4>)
+ 8000aae:	681b      	ldr	r3, [r3, #0]
+ 8000ab0:	4a50      	ldr	r2, [pc, #320]	; (8000bf4 <main_fsm+0x4e0>)
+ 8000ab2:	6013      	str	r3, [r2, #0]
 				}
 				flag_green_change = 0;
- 8000abc:	4b4f      	ldr	r3, [pc, #316]	; (8000bfc <main_fsm+0x4e8>)
- 8000abe:	2200      	movs	r2, #0
- 8000ac0:	601a      	str	r2, [r3, #0]
+ 8000ab4:	4b51      	ldr	r3, [pc, #324]	; (8000bfc <main_fsm+0x4e8>)
+ 8000ab6:	2200      	movs	r2, #0
+ 8000ab8:	601a      	str	r2, [r3, #0]
 				//check valid of time
 				if(GREEN_TIME + AMBER_TIME != RED_TIME) {
- 8000ac2:	4b4c      	ldr	r3, [pc, #304]	; (8000bf4 <main_fsm+0x4e0>)
- 8000ac4:	681a      	ldr	r2, [r3, #0]
- 8000ac6:	4b46      	ldr	r3, [pc, #280]	; (8000be0 <main_fsm+0x4cc>)
- 8000ac8:	681b      	ldr	r3, [r3, #0]
- 8000aca:	441a      	add	r2, r3
- 8000acc:	4b4c      	ldr	r3, [pc, #304]	; (8000c00 <main_fsm+0x4ec>)
- 8000ace:	681b      	ldr	r3, [r3, #0]
- 8000ad0:	429a      	cmp	r2, r3
- 8000ad2:	d006      	beq.n	8000ae2 <main_fsm+0x3ce>
+ 8000aba:	4b4e      	ldr	r3, [pc, #312]	; (8000bf4 <main_fsm+0x4e0>)
+ 8000abc:	681a      	ldr	r2, [r3, #0]
+ 8000abe:	4b48      	ldr	r3, [pc, #288]	; (8000be0 <main_fsm+0x4cc>)
+ 8000ac0:	681b      	ldr	r3, [r3, #0]
+ 8000ac2:	441a      	add	r2, r3
+ 8000ac4:	4b4e      	ldr	r3, [pc, #312]	; (8000c00 <main_fsm+0x4ec>)
+ 8000ac6:	681b      	ldr	r3, [r3, #0]
+ 8000ac8:	429a      	cmp	r2, r3
+ 8000aca:	d006      	beq.n	8000ada <main_fsm+0x3c6>
 					status = TIME_ERROR;
- 8000ad4:	4b46      	ldr	r3, [pc, #280]	; (8000bf0 <main_fsm+0x4dc>)
- 8000ad6:	2209      	movs	r2, #9
- 8000ad8:	601a      	str	r2, [r3, #0]
+ 8000acc:	4b48      	ldr	r3, [pc, #288]	; (8000bf0 <main_fsm+0x4dc>)
+ 8000ace:	2209      	movs	r2, #9
+ 8000ad0:	601a      	str	r2, [r3, #0]
 					setTimer2(200);
- 8000ada:	20c8      	movs	r0, #200	; 0xc8
- 8000adc:	f000 fa46 	bl	8000f6c <setTimer2>
- 8000ae0:	e01b      	b.n	8000b1a <main_fsm+0x406>
+ 8000ad2:	20c8      	movs	r0, #200	; 0xc8
+ 8000ad4:	f000 fa4a 	bl	8000f6c <setTimer2>
+ 8000ad8:	e01b      	b.n	8000b12 <main_fsm+0x3fe>
 				}
 				else {
 					status = RED_GREEN;
- 8000ae2:	4b43      	ldr	r3, [pc, #268]	; (8000bf0 <main_fsm+0x4dc>)
- 8000ae4:	2202      	movs	r2, #2
- 8000ae6:	601a      	str	r2, [r3, #0]
+ 8000ada:	4b45      	ldr	r3, [pc, #276]	; (8000bf0 <main_fsm+0x4dc>)
+ 8000adc:	2202      	movs	r2, #2
+ 8000ade:	601a      	str	r2, [r3, #0]
 					setTimer2(GREEN_TIME);
- 8000ae8:	4b42      	ldr	r3, [pc, #264]	; (8000bf4 <main_fsm+0x4e0>)
- 8000aea:	681b      	ldr	r3, [r3, #0]
- 8000aec:	4618      	mov	r0, r3
- 8000aee:	f000 fa3d 	bl	8000f6c <setTimer2>
+ 8000ae0:	4b44      	ldr	r3, [pc, #272]	; (8000bf4 <main_fsm+0x4e0>)
+ 8000ae2:	681b      	ldr	r3, [r3, #0]
+ 8000ae4:	4618      	mov	r0, r3
+ 8000ae6:	f000 fa41 	bl	8000f6c <setTimer2>
 					counter1 = RED_TIME/100;
- 8000af2:	4b43      	ldr	r3, [pc, #268]	; (8000c00 <main_fsm+0x4ec>)
- 8000af4:	681b      	ldr	r3, [r3, #0]
- 8000af6:	4a3b      	ldr	r2, [pc, #236]	; (8000be4 <main_fsm+0x4d0>)
- 8000af8:	fb82 1203 	smull	r1, r2, r2, r3
- 8000afc:	1152      	asrs	r2, r2, #5
- 8000afe:	17db      	asrs	r3, r3, #31
- 8000b00:	1ad3      	subs	r3, r2, r3
- 8000b02:	4a40      	ldr	r2, [pc, #256]	; (8000c04 <main_fsm+0x4f0>)
- 8000b04:	6013      	str	r3, [r2, #0]
+ 8000aea:	4b45      	ldr	r3, [pc, #276]	; (8000c00 <main_fsm+0x4ec>)
+ 8000aec:	681b      	ldr	r3, [r3, #0]
+ 8000aee:	4a3d      	ldr	r2, [pc, #244]	; (8000be4 <main_fsm+0x4d0>)
+ 8000af0:	fb82 1203 	smull	r1, r2, r2, r3
+ 8000af4:	1152      	asrs	r2, r2, #5
+ 8000af6:	17db      	asrs	r3, r3, #31
+ 8000af8:	1ad3      	subs	r3, r2, r3
+ 8000afa:	4a42      	ldr	r2, [pc, #264]	; (8000c04 <main_fsm+0x4f0>)
+ 8000afc:	6013      	str	r3, [r2, #0]
 					counter2 = GREEN_TIME/100;
- 8000b06:	4b3b      	ldr	r3, [pc, #236]	; (8000bf4 <main_fsm+0x4e0>)
- 8000b08:	681b      	ldr	r3, [r3, #0]
- 8000b0a:	4a36      	ldr	r2, [pc, #216]	; (8000be4 <main_fsm+0x4d0>)
- 8000b0c:	fb82 1203 	smull	r1, r2, r2, r3
- 8000b10:	1152      	asrs	r2, r2, #5
- 8000b12:	17db      	asrs	r3, r3, #31
- 8000b14:	1ad3      	subs	r3, r2, r3
- 8000b16:	4a3c      	ldr	r2, [pc, #240]	; (8000c08 <main_fsm+0x4f4>)
- 8000b18:	6013      	str	r3, [r2, #0]
+ 8000afe:	4b3d      	ldr	r3, [pc, #244]	; (8000bf4 <main_fsm+0x4e0>)
+ 8000b00:	681b      	ldr	r3, [r3, #0]
+ 8000b02:	4a38      	ldr	r2, [pc, #224]	; (8000be4 <main_fsm+0x4d0>)
+ 8000b04:	fb82 1203 	smull	r1, r2, r2, r3
+ 8000b08:	1152      	asrs	r2, r2, #5
+ 8000b0a:	17db      	asrs	r3, r3, #31
+ 8000b0c:	1ad3      	subs	r3, r2, r3
+ 8000b0e:	4a3e      	ldr	r2, [pc, #248]	; (8000c08 <main_fsm+0x4f4>)
+ 8000b10:	6013      	str	r3, [r2, #0]
 				}
 			}
 			if(isButton2Pressed() == 1){
- 8000b1a:	f7ff fb9d 	bl	8000258 <isButton2Pressed>
- 8000b1e:	4603      	mov	r3, r0
- 8000b20:	2b01      	cmp	r3, #1
- 8000b22:	d10d      	bne.n	8000b40 <main_fsm+0x42c>
+ 8000b12:	f7ff fba1 	bl	8000258 <isButton2Pressed>
+ 8000b16:	4603      	mov	r3, r0
+ 8000b18:	2b01      	cmp	r3, #1
+ 8000b1a:	d10d      	bne.n	8000b38 <main_fsm+0x424>
 				GREEN_TIME += 100;
- 8000b24:	4b33      	ldr	r3, [pc, #204]	; (8000bf4 <main_fsm+0x4e0>)
- 8000b26:	681b      	ldr	r3, [r3, #0]
- 8000b28:	3364      	adds	r3, #100	; 0x64
- 8000b2a:	4a32      	ldr	r2, [pc, #200]	; (8000bf4 <main_fsm+0x4e0>)
- 8000b2c:	6013      	str	r3, [r2, #0]
+ 8000b1c:	4b35      	ldr	r3, [pc, #212]	; (8000bf4 <main_fsm+0x4e0>)
+ 8000b1e:	681b      	ldr	r3, [r3, #0]
+ 8000b20:	3364      	adds	r3, #100	; 0x64
+ 8000b22:	4a34      	ldr	r2, [pc, #208]	; (8000bf4 <main_fsm+0x4e0>)
+ 8000b24:	6013      	str	r3, [r2, #0]
 				if(GREEN_TIME >= 10000) GREEN_TIME = 100;
- 8000b2e:	4b31      	ldr	r3, [pc, #196]	; (8000bf4 <main_fsm+0x4e0>)
- 8000b30:	681b      	ldr	r3, [r3, #0]
- 8000b32:	f242 720f 	movw	r2, #9999	; 0x270f
- 8000b36:	4293      	cmp	r3, r2
- 8000b38:	dd02      	ble.n	8000b40 <main_fsm+0x42c>
- 8000b3a:	4b2e      	ldr	r3, [pc, #184]	; (8000bf4 <main_fsm+0x4e0>)
- 8000b3c:	2264      	movs	r2, #100	; 0x64
- 8000b3e:	601a      	str	r2, [r3, #0]
+ 8000b26:	4b33      	ldr	r3, [pc, #204]	; (8000bf4 <main_fsm+0x4e0>)
+ 8000b28:	681b      	ldr	r3, [r3, #0]
+ 8000b2a:	f242 720f 	movw	r2, #9999	; 0x270f
+ 8000b2e:	4293      	cmp	r3, r2
+ 8000b30:	dd02      	ble.n	8000b38 <main_fsm+0x424>
+ 8000b32:	4b30      	ldr	r3, [pc, #192]	; (8000bf4 <main_fsm+0x4e0>)
+ 8000b34:	2264      	movs	r2, #100	; 0x64
+ 8000b36:	601a      	str	r2, [r3, #0]
 			}
 			if(isButton3Pressed() == 1){
- 8000b40:	f7ff fb9c 	bl	800027c <isButton3Pressed>
- 8000b44:	4603      	mov	r3, r0
- 8000b46:	2b01      	cmp	r3, #1
- 8000b48:	d144      	bne.n	8000bd4 <main_fsm+0x4c0>
+ 8000b38:	f7ff fba0 	bl	800027c <isButton3Pressed>
+ 8000b3c:	4603      	mov	r3, r0
+ 8000b3e:	2b01      	cmp	r3, #1
+ 8000b40:	d144      	bne.n	8000bcc <main_fsm+0x4b8>
 				flag_green_change = 1;
- 8000b4a:	4b2c      	ldr	r3, [pc, #176]	; (8000bfc <main_fsm+0x4e8>)
- 8000b4c:	2201      	movs	r2, #1
- 8000b4e:	601a      	str	r2, [r3, #0]
+ 8000b42:	4b2e      	ldr	r3, [pc, #184]	; (8000bfc <main_fsm+0x4e8>)
+ 8000b44:	2201      	movs	r2, #1
+ 8000b46:	601a      	str	r2, [r3, #0]
 			}
 			break;
- 8000b50:	e040      	b.n	8000bd4 <main_fsm+0x4c0>
+ 8000b48:	e040      	b.n	8000bcc <main_fsm+0x4b8>
 		case TIME_ERROR:
 			//all led7SED display 0 for error
 			updateBuffer7SEG(0, 0);
- 8000b52:	2100      	movs	r1, #0
- 8000b54:	2000      	movs	r0, #0
- 8000b56:	f7ff fd1b 	bl	8000590 <updateBuffer7SEG>
+ 8000b4a:	2100      	movs	r1, #0
+ 8000b4c:	2000      	movs	r0, #0
+ 8000b4e:	f7ff fd1f 	bl	8000590 <updateBuffer7SEG>
 			clearAllLed();
- 8000b5a:	f000 f8b7 	bl	8000ccc <clearAllLed>
+ 8000b52:	f000 f8bb 	bl	8000ccc <clearAllLed>
 			RED_TIME = RED_OLD_TIME;
- 8000b5e:	4b2b      	ldr	r3, [pc, #172]	; (8000c0c <main_fsm+0x4f8>)
- 8000b60:	681b      	ldr	r3, [r3, #0]
- 8000b62:	4a27      	ldr	r2, [pc, #156]	; (8000c00 <main_fsm+0x4ec>)
- 8000b64:	6013      	str	r3, [r2, #0]
+ 8000b56:	4b2d      	ldr	r3, [pc, #180]	; (8000c0c <main_fsm+0x4f8>)
+ 8000b58:	681b      	ldr	r3, [r3, #0]
+ 8000b5a:	4a29      	ldr	r2, [pc, #164]	; (8000c00 <main_fsm+0x4ec>)
+ 8000b5c:	6013      	str	r3, [r2, #0]
 			AMBER_TIME = AMBER_OLD_TIME;
- 8000b66:	4b21      	ldr	r3, [pc, #132]	; (8000bec <main_fsm+0x4d8>)
- 8000b68:	681b      	ldr	r3, [r3, #0]
- 8000b6a:	4a1d      	ldr	r2, [pc, #116]	; (8000be0 <main_fsm+0x4cc>)
- 8000b6c:	6013      	str	r3, [r2, #0]
+ 8000b5e:	4b23      	ldr	r3, [pc, #140]	; (8000bec <main_fsm+0x4d8>)
+ 8000b60:	681b      	ldr	r3, [r3, #0]
+ 8000b62:	4a1f      	ldr	r2, [pc, #124]	; (8000be0 <main_fsm+0x4cc>)
+ 8000b64:	6013      	str	r3, [r2, #0]
 			GREEN_TIME = GREEN_OLD_TIME ;
- 8000b6e:	4b22      	ldr	r3, [pc, #136]	; (8000bf8 <main_fsm+0x4e4>)
- 8000b70:	681b      	ldr	r3, [r3, #0]
- 8000b72:	4a20      	ldr	r2, [pc, #128]	; (8000bf4 <main_fsm+0x4e0>)
- 8000b74:	6013      	str	r3, [r2, #0]
+ 8000b66:	4b24      	ldr	r3, [pc, #144]	; (8000bf8 <main_fsm+0x4e4>)
+ 8000b68:	681b      	ldr	r3, [r3, #0]
+ 8000b6a:	4a22      	ldr	r2, [pc, #136]	; (8000bf4 <main_fsm+0x4e0>)
+ 8000b6c:	6013      	str	r3, [r2, #0]
 			if(timer2_flag == 1) {
- 8000b76:	4b26      	ldr	r3, [pc, #152]	; (8000c10 <main_fsm+0x4fc>)
- 8000b78:	681b      	ldr	r3, [r3, #0]
- 8000b7a:	2b01      	cmp	r3, #1
- 8000b7c:	d12c      	bne.n	8000bd8 <main_fsm+0x4c4>
+ 8000b6e:	4b28      	ldr	r3, [pc, #160]	; (8000c10 <main_fsm+0x4fc>)
+ 8000b70:	681b      	ldr	r3, [r3, #0]
+ 8000b72:	2b01      	cmp	r3, #1
+ 8000b74:	d12c      	bne.n	8000bd0 <main_fsm+0x4bc>
 				status = RED_GREEN;
- 8000b7e:	4b1c      	ldr	r3, [pc, #112]	; (8000bf0 <main_fsm+0x4dc>)
- 8000b80:	2202      	movs	r2, #2
- 8000b82:	601a      	str	r2, [r3, #0]
+ 8000b76:	4b1e      	ldr	r3, [pc, #120]	; (8000bf0 <main_fsm+0x4dc>)
+ 8000b78:	2202      	movs	r2, #2
+ 8000b7a:	601a      	str	r2, [r3, #0]
 				setTimer2(GREEN_TIME);
- 8000b84:	4b1b      	ldr	r3, [pc, #108]	; (8000bf4 <main_fsm+0x4e0>)
- 8000b86:	681b      	ldr	r3, [r3, #0]
- 8000b88:	4618      	mov	r0, r3
- 8000b8a:	f000 f9ef 	bl	8000f6c <setTimer2>
+ 8000b7c:	4b1d      	ldr	r3, [pc, #116]	; (8000bf4 <main_fsm+0x4e0>)
+ 8000b7e:	681b      	ldr	r3, [r3, #0]
+ 8000b80:	4618      	mov	r0, r3
+ 8000b82:	f000 f9f3 	bl	8000f6c <setTimer2>
 				counter1 = RED_TIME/100;
- 8000b8e:	4b1c      	ldr	r3, [pc, #112]	; (8000c00 <main_fsm+0x4ec>)
- 8000b90:	681b      	ldr	r3, [r3, #0]
- 8000b92:	4a14      	ldr	r2, [pc, #80]	; (8000be4 <main_fsm+0x4d0>)
- 8000b94:	fb82 1203 	smull	r1, r2, r2, r3
- 8000b98:	1152      	asrs	r2, r2, #5
- 8000b9a:	17db      	asrs	r3, r3, #31
- 8000b9c:	1ad3      	subs	r3, r2, r3
- 8000b9e:	4a19      	ldr	r2, [pc, #100]	; (8000c04 <main_fsm+0x4f0>)
- 8000ba0:	6013      	str	r3, [r2, #0]
+ 8000b86:	4b1e      	ldr	r3, [pc, #120]	; (8000c00 <main_fsm+0x4ec>)
+ 8000b88:	681b      	ldr	r3, [r3, #0]
+ 8000b8a:	4a16      	ldr	r2, [pc, #88]	; (8000be4 <main_fsm+0x4d0>)
+ 8000b8c:	fb82 1203 	smull	r1, r2, r2, r3
+ 8000b90:	1152      	asrs	r2, r2, #5
+ 8000b92:	17db      	asrs	r3, r3, #31
+ 8000b94:	1ad3      	subs	r3, r2, r3
+ 8000b96:	4a1b      	ldr	r2, [pc, #108]	; (8000c04 <main_fsm+0x4f0>)
+ 8000b98:	6013      	str	r3, [r2, #0]
 				counter2 = GREEN_TIME/100;
- 8000ba2:	4b14      	ldr	r3, [pc, #80]	; (8000bf4 <main_fsm+0x4e0>)
- 8000ba4:	681b      	ldr	r3, [r3, #0]
- 8000ba6:	4a0f      	ldr	r2, [pc, #60]	; (8000be4 <main_fsm+0x4d0>)
- 8000ba8:	fb82 1203 	smull	r1, r2, r2, r3
- 8000bac:	1152      	asrs	r2, r2, #5
- 8000bae:	17db      	asrs	r3, r3, #31
- 8000bb0:	1ad3      	subs	r3, r2, r3
- 8000bb2:	4a15      	ldr	r2, [pc, #84]	; (8000c08 <main_fsm+0x4f4>)
- 8000bb4:	6013      	str	r3, [r2, #0]
-}
+ 8000b9a:	4b16      	ldr	r3, [pc, #88]	; (8000bf4 <main_fsm+0x4e0>)
+ 8000b9c:	681b      	ldr	r3, [r3, #0]
+ 8000b9e:	4a11      	ldr	r2, [pc, #68]	; (8000be4 <main_fsm+0x4d0>)
+ 8000ba0:	fb82 1203 	smull	r1, r2, r2, r3
+ 8000ba4:	1152      	asrs	r2, r2, #5
+ 8000ba6:	17db      	asrs	r3, r3, #31
+ 8000ba8:	1ad3      	subs	r3, r2, r3
+ 8000baa:	4a17      	ldr	r2, [pc, #92]	; (8000c08 <main_fsm+0x4f4>)
+ 8000bac:	6013      	str	r3, [r2, #0]
+			}
 			break;
- 8000bb6:	e00f      	b.n	8000bd8 <main_fsm+0x4c4>
+ 8000bae:	e00f      	b.n	8000bd0 <main_fsm+0x4bc>
 		default:
 			break;
+ 8000bb0:	bf00      	nop
+ 8000bb2:	e00e      	b.n	8000bd2 <main_fsm+0x4be>
+			break;
+ 8000bb4:	bf00      	nop
+ 8000bb6:	e00c      	b.n	8000bd2 <main_fsm+0x4be>
+			break;
  8000bb8:	bf00      	nop
- 8000bba:	e00e      	b.n	8000bda <main_fsm+0x4c6>
+ 8000bba:	e00a      	b.n	8000bd2 <main_fsm+0x4be>
 			break;
  8000bbc:	bf00      	nop
- 8000bbe:	e00c      	b.n	8000bda <main_fsm+0x4c6>
+ 8000bbe:	e008      	b.n	8000bd2 <main_fsm+0x4be>
 			break;
  8000bc0:	bf00      	nop
- 8000bc2:	e00a      	b.n	8000bda <main_fsm+0x4c6>
+ 8000bc2:	e006      	b.n	8000bd2 <main_fsm+0x4be>
 			break;
  8000bc4:	bf00      	nop
- 8000bc6:	e008      	b.n	8000bda <main_fsm+0x4c6>
+ 8000bc6:	e004      	b.n	8000bd2 <main_fsm+0x4be>
 			break;
  8000bc8:	bf00      	nop
- 8000bca:	e006      	b.n	8000bda <main_fsm+0x4c6>
+ 8000bca:	e002      	b.n	8000bd2 <main_fsm+0x4be>
 			break;
  8000bcc:	bf00      	nop
- 8000bce:	e004      	b.n	8000bda <main_fsm+0x4c6>
+ 8000bce:	e000      	b.n	8000bd2 <main_fsm+0x4be>
 			break;
  8000bd0:	bf00      	nop
- 8000bd2:	e002      	b.n	8000bda <main_fsm+0x4c6>
-			break;
- 8000bd4:	bf00      	nop
- 8000bd6:	e000      	b.n	8000bda <main_fsm+0x4c6>
-			break;
- 8000bd8:	bf00      	nop
 		}
+	scan7SEG();
+ 8000bd2:	f7ff fd19 	bl	8000608 <scan7SEG>
+	count_down();
+ 8000bd6:	f7ff fd73 	bl	80006c0 <count_down>
+
 }
  8000bda:	bf00      	nop
  8000bdc:	bd80      	pop	{r7, pc}

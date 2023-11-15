@@ -17,8 +17,7 @@ void count_down() {
   }
 }
 void main_fsm() {
-	scan7SEG();
-	count_down();
+
 	switch(status) {
 		case INIT:
 			clearAllLed();
@@ -175,10 +174,13 @@ void main_fsm() {
 				setTimer2(GREEN_TIME);
 				counter1 = RED_TIME/100;
 				counter2 = GREEN_TIME/100;
-}
+			}
 			break;
 		default:
 			break;
 		}
+	scan7SEG();
+	count_down();
+
 }
 
