@@ -15,6 +15,8 @@
 #include "blinky_led.h"
 #include "button.h"
 
+void saveNormalTime();
+void normalToMode2();
 void count_down();
 void main_fsm();
 
